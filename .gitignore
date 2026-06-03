@@ -1,0 +1,38 @@
+cat > .gitignore << 'EOF'
+# Node
+node_modules/
+.next/
+out/
+
+# Java
+target/
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Logs
+logs/
+*.log
+
+# Build
+dist/
+build/
+EOF
