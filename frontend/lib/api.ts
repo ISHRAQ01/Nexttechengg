@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// Change this to your Spring Boot URL when deployed
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api";
 
 export const apiClient = axios.create({
@@ -8,7 +7,7 @@ export const apiClient = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 30000,
+  timeout: 60000, // 60 seconds for cold start
 });
 
 export interface Inquiry {
@@ -35,6 +34,16 @@ export const sendInquiry = async (inquiry: Inquiry): Promise<InquiryResponse> =>
   } catch (error) {
     console.error("API Error:", error);
     throw error;
+  }
+};
+
+// Wake up backend - call this when contact page loads
+export const wakeUpBackend = async (): Promise<void> => {
+  try {
+    await fetch(`${API_BASE_URL}/inquiries/health`);
+    console.log("Backend awake!");
+  } catch (e) {
+    // ignore - backend waking up
   }
 };
 
