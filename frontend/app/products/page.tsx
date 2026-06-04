@@ -92,73 +92,13 @@ export default function ProductsPage() {
 
   return (
     <div className="bg-black min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-24 px-4 overflow-hidden">
+      {/* Gallery Section - FIRST */}
+      <section className="relative pt-28 pb-16 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900" />
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
         
-        <div className="relative max-w-7xl mx-auto text-center z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="inline-block bg-blue-600/20 text-blue-400 text-sm px-4 py-1.5 rounded-full mb-6 border border-blue-500/30">
-              Our Capabilities
-            </span>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-              Products &{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
-                Services
-              </span>
-            </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
-              Comprehensive manufacturing solutions for diverse industrial needs
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Products Grid */}
-      <section className="py-20 px-4 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {products.map((product, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.03 }}
-                whileHover={{ y: -5 }}
-                className="group bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 hover:border-blue-500/50 rounded-2xl p-6 transition-all duration-300"
-              >
-                <div className="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600/20 transition-all">
-                  <product.icon className="w-6 h-6 text-blue-400" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{product.name}</h3>
-                <p className="text-gray-500 text-sm mb-4 leading-relaxed">{product.description}</p>
-                <div className="border-t border-gray-800 pt-3">
-                  <p className="text-xs text-gray-600 uppercase tracking-wide mb-2">Key Features</p>
-                  <ul className="space-y-1">
-                    {product.features.map((feature, i) => (
-                      <li key={i} className="text-xs text-gray-400 flex items-center gap-1.5">
-                        <span className="w-1 h-1 bg-blue-500 rounded-full" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+        <div className="relative max-w-7xl mx-auto z-10">
+          <div className="text-center mb-8">
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -223,6 +163,60 @@ export default function ProductsPage() {
                 </motion.div>
               ))}
             </AnimatePresence>
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section className="py-16 px-4 bg-gradient-to-b from-gray-900 to-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-blue-400 font-semibold text-sm uppercase tracking-widest"
+            >
+              Our Capabilities
+            </motion.span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mt-3 mb-4">
+              Products &{" "}
+              <span className="text-blue-400">Services</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Comprehensive manufacturing solutions for diverse industrial needs
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {products.map((product, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.03 }}
+                whileHover={{ y: -5 }}
+                className="group bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 hover:border-blue-500/50 rounded-2xl p-6 transition-all duration-300"
+              >
+                <div className="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600/20 transition-all">
+                  <product.icon className="w-6 h-6 text-blue-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{product.name}</h3>
+                <p className="text-gray-500 text-sm mb-4 leading-relaxed">{product.description}</p>
+                <div className="border-t border-gray-800 pt-3">
+                  <p className="text-xs text-gray-600 uppercase tracking-wide mb-2">Key Features</p>
+                  <ul className="space-y-1">
+                    {product.features.map((feature, i) => (
+                      <li key={i} className="text-xs text-gray-400 flex items-center gap-1.5">
+                        <span className="w-1 h-1 bg-blue-500 rounded-full" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

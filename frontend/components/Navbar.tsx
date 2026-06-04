@@ -28,15 +28,15 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
-          ? "bg-black/95 backdrop-blur-xl border-b border-gray-800 shadow-lg shadow-black/50 py-2"
-          : "bg-black/80 backdrop-blur-sm py-4"
+        ? "bg-black/95 backdrop-blur-xl border-b border-gray-800 shadow-lg shadow-black/50 py-2"
+        : "bg-black/80 backdrop-blur-sm py-4"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14">
               <Image
                 src="/logo.png"
                 alt="Next Tech Engineering"
@@ -65,8 +65,8 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${pathname === link.href
-                    ? "text-white bg-white/10"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                  ? "text-white bg-white/10"
+                  : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
               >
                 {link.name}
@@ -107,8 +107,8 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${pathname === link.href
-                    ? "bg-blue-600/20 text-blue-400"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                  ? "bg-blue-600/20 text-blue-400"
+                  : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
               >
                 {link.name}

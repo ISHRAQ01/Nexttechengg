@@ -109,7 +109,7 @@ export default function Home() {
             },
             openingHoursSpecification: [
               {
-               "@type": "OpeningHoursSpecification",
+                "@type": "OpeningHoursSpecification",
                 dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                 opens: "09:00",
                 closes: "19:00",
@@ -155,12 +155,12 @@ export default function Home() {
               <span className="text-2xl sm:text-4xl md:text-6xl text-white drop-shadow-2xl">Engineered Excellence</span>
             </h1>
 
-            <p className="text-sm sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-10 max-w-3xl mx-auto font-medium drop-shadow-lg px-2 leading-relaxed">
-              Specializing in Cap Mould, Flip Top Cap Mould<br className="sm:hidden" />
+            <p className="text-sm sm:text-lg md:text-xl text-white mb-8 sm:mb-10 max-w-3xl mx-auto font-medium leading-relaxed bg-black/40 backdrop-blur-sm rounded-2xl px-6 py-4 inline-block">
+              Specializing in Cap Mould, Flip Top Cap Mould
+              <br className="sm:hidden" />
               • Injection Mould & Press Tool Manufacturing
               • Plastic & Metal Components • EDM & Moulding Job Work
             </p>
-
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link
                 href="/contact"
