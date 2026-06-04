@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaTools, FaCogs, FaIndustry, FaFire, FaCube, FaMicrochip } from "react-icons/fa";
 import ImageGallery from "@/components/ImageGallery";
+import Certificates from "@/components/Certificates";
 
 const services = [
   { icon: FaTools, title: "Custom Fixtures & Jigs", desc: "Precision-engineered fixtures for accurate manufacturing" },
@@ -177,6 +178,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Certificates Section */}
+<Certificates />
+
+{/* CTA Section */}
+<section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-blue-800">
+  ...
+</section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-blue-800">

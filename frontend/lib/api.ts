@@ -1,14 +1,4 @@
-import axios from "axios";
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api";
-
-export const apiClient = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-  timeout: 60000, // 60 seconds for cold start
-});
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
 
 export interface Inquiry {
   name: string;
@@ -17,42 +7,18 @@ export interface Inquiry {
   message?: string;
 }
 
-export interface InquiryResponse {
-  id: number;
-  name: string;
-  mobile: string;
-  requirement: string;
-  message: string;
-  createdAt: string;
-  read: boolean;
-}
+export const sendInquiry = async (inquiry: Inquiry): Promise<boolean> => {
+  const formData = new FormData();
+  formData.append("entry.123456789", inquiry.name);      // Replace with actual entry IDs
+  formData.append("entry.987654321", inquiry.mobile);
+  formData.append("entry.111111111", inquiry.requirement || "");
+  formData.append("entry.222222222", inquiry.message || "");
 
-export const sendInquiry = async (inquiry: Inquiry): Promise<InquiryResponse> => {
-  try {
-    const response = await apiClient.post("/inquiries", inquiry);
-    return response.data;
-  } catch (error) {
-    console.error("API Error:", error);
-    throw error;
-  }
-};
-
-// Wake up backend - call this when contact page loads
-export const wakeUpBackend = async (): Promise<void> => {
-  try {
-    await fetch(`${API_BASE_URL}/inquiries/health`);
-    console.log("Backend awake!");
-  } catch (e) {
-    // ignore - backend waking up
-  }
-};
-
-export const checkBackendHealth = async (): Promise<string> => {
-  try {
-    const response = await apiClient.get("/inquiries/health");
-    return response.data;
-  } catch (error) {
-    console.error("Backend not reachable:", error);
-    return "Backend unavailable";
-  }
+  await fetch(GOOGLE_FORM_URL, {
+    method: "POST",
+    body: formData,
+    mode: "no-cors",
+  });
+  
+  return true;
 };
