@@ -80,6 +80,45 @@ const clients = [
 export default function Home() {
   return (
     <div className="bg-black">
+      {/* Schema Markup for Manufacturing Business */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Next Tech Engineering",
+            image: "https://nexttech-engineering.vercel.app/back.jpeg",
+            "@id": "https://nexttech-engineering.vercel.app",
+            url: "https://nexttech-engineering.vercel.app",
+            telephone: "+919810541602",
+            email: "nexttechengg@gmail.com",
+            description: "Precision manufacturing of Custom Fixtures, Moulding Dies, Plastic Injection Moulds, EDM Drill Job Work in Ghaziabad since 2013.",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "PLOT NO:12, KHASRA NO 21, MAINAPUR IND. AREA, MEERUT ROAD",
+              addressLocality: "Ghaziabad",
+              addressRegion: "Uttar Pradesh",
+              postalCode: "201001",
+              addressCountry: "IN",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: "28.6692",
+              longitude: "77.4538",
+            },
+            openingHoursSpecification: [
+              {
+               "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                opens: "09:00",
+                closes: "19:00",
+              },
+            ],
+            sameAs: [],
+          }),
+        }}
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden px-4 py-20">
         {/* Background Image */}
