@@ -81,7 +81,7 @@ export default function Home() {
   return (
     <div className="bg-black">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden px-4 py-20">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -94,7 +94,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative z-20 text-center px-4 max-w-6xl mx-auto">
+        <div className="relative z-20 text-center max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -104,31 +104,35 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-block bg-black/60 backdrop-blur-sm text-white text-sm px-5 py-2 rounded-full mb-8 border border-white/20"
+              className="inline-block bg-black/60 backdrop-blur-sm text-white text-xs sm:text-sm px-4 sm:px-5 py-1.5 sm:py-2 rounded-full mb-6 sm:mb-8 border border-white/20"
             >
               Since 2013 — Ghaziabad, Uttar Pradesh
             </motion.span>
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tight leading-none drop-shadow-2xl">
+
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 sm:mb-8 tracking-tight leading-tight drop-shadow-2xl">
               Precision{" "}
               <span className="text-blue-400 drop-shadow-2xl">Manufacturing</span>
               <br />
-              <span className="text-4xl md:text-6xl text-white drop-shadow-2xl">Engineered Excellence</span>
+              <span className="text-2xl sm:text-4xl md:text-6xl text-white drop-shadow-2xl">Engineered Excellence</span>
             </h1>
-            <p className="text-lg md:text-xl text-white mb-10 max-w-3xl mx-auto font-medium drop-shadow-lg">
-              Specializing in Cap Mould, Flip Top Cap Mould • Injection Mould & Press Tool Manufacturing
+
+            <p className="text-sm sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-10 max-w-3xl mx-auto font-medium drop-shadow-lg px-2 leading-relaxed">
+              Specializing in Cap Mould, Flip Top Cap Mould<br className="sm:hidden" />
+              • Injection Mould & Press Tool Manufacturing
               • Plastic & Metal Components • EDM & Moulding Job Work
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link
                 href="/contact"
-                className="group bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-500 transition-all duration-300 hover:scale-105 inline-flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25"
+                className="group bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-blue-500 transition-all duration-300 inline-flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25"
               >
                 Get a Quote
                 <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/products"
-                className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 inline-flex items-center justify-center gap-2"
+                className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 inline-flex items-center justify-center gap-2"
               >
                 View Products
               </Link>
@@ -137,7 +141,7 @@ export default function Home() {
         </div>
 
         <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 hidden sm:block"
           animate={{ y: [0, 12, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
@@ -150,7 +154,6 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
-
       {/* Services Section */}
       <section className="py-24 px-4 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto">
@@ -290,7 +293,7 @@ export default function Home() {
             Ready to Start Your Project?
           </h2>
           <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto font-light">
-            Send us your drawings or requirements. We'll provide a competitive quote within 24 hours.
+            Send us your drawings or requirements. We&aposll provide a competitive quote within 24 hours.
           </p>
           <Link
             href="/contact"
