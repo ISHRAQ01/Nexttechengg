@@ -1,26 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Target, Eye, Heart, Trophy, Users, Calendar } from "lucide-react";
+import { Target, Eye, Heart, Trophy, Users, Calendar, ChevronRight } from "lucide-react";
 
 const values = [
   { 
     icon: Target, 
     title: "Precision", 
     description: "We deliver exact specifications with zero compromise on quality.",
-    color: "text-blue-600"
   },
   { 
     icon: Eye, 
     title: "Innovation", 
     description: "Continuous improvement in manufacturing processes and techniques.",
-    color: "text-green-600"
   },
   { 
     icon: Heart, 
     title: "Quality", 
     description: "Fine finish and high strength in every product we manufacture.",
-    color: "text-red-600"
   },
 ];
 
@@ -33,53 +30,71 @@ const milestones = [
 
 export default function AboutPage() {
   return (
-    <div>
+    <div className="bg-black">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-20 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }}
+      <section className="relative py-32 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl" />
+        
+        <div className="relative max-w-7xl mx-auto text-center z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            transition={{ duration: 0.8 }}
           >
-            About Next Tech Engineering
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
-          >
-            Precision Manufacturing Excellence Since 2013
-          </motion.p>
+            <span className="inline-block bg-blue-600/20 text-blue-400 text-sm px-4 py-1.5 rounded-full mb-6 border border-blue-500/30">
+              Since 2013
+            </span>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+              About{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
+                Next Tech
+              </span>
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
+              Precision Manufacturing Excellence Since 2013
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-20 px-4">
+      <section className="py-24 px-4 bg-black">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-blue-600 font-semibold text-sm uppercase tracking-wide">
+              <span className="text-blue-400 font-semibold text-sm uppercase tracking-widest">
                 Our Story
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">
-                10+ Years of Manufacturing Excellence
+              <h2 className="text-3xl md:text-5xl font-bold text-white mt-3 mb-6 leading-tight">
+                10+ Years of{" "}
+                <span className="text-blue-400">Manufacturing Excellence</span>
               </h2>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                <strong>Next Tech Engineering</strong> was established in <strong>2013 at Ghaziabad, Uttar Pradesh</strong> as a Sole Proprietorship firm. Over the last decade, we have built a strong reputation as a reliable manufacturer of high-precision industrial components.
-              </p>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                We are a well-known manufacturer of a wide array of <strong>Custom Fixtures, Moulding Dies, Industrial Jigs, Plastic Injection Moulds, Plastic Parts, Plastic Tools, and Sheet Metal Parts.</strong> Additionally, we specialize in providing <strong>EDM Drill Job Work.</strong>
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                Our entire product range is highly acclaimed in the market for its <strong>fine finish, high strength, dimensional accuracy, and durability.</strong>
-              </p>
+              <div className="space-y-4 text-gray-400 leading-relaxed">
+                <p>
+                  <strong className="text-white">Next Tech Engineering</strong> was established in{" "}
+                  <strong className="text-white">2013 at Ghaziabad, Uttar Pradesh</strong> as a Sole 
+                  Proprietorship firm. Over the last decade, we have built a strong reputation as a 
+                  reliable manufacturer of high-precision industrial components.
+                </p>
+                <p>
+                  We are a well-known manufacturer of a wide array of{" "}
+                  <strong className="text-white">Custom Fixtures, Moulding Dies, Industrial Jigs, 
+                  Plastic Injection Moulds, Plastic Parts, Plastic Tools, and Sheet Metal Parts.</strong>
+                  {" "}Additionally, we specialize in providing{" "}
+                  <strong className="text-white">EDM Drill Job Work.</strong>
+                </p>
+                <p>
+                  Our entire product range is highly acclaimed in the market for its{" "}
+                  <strong className="text-white">fine finish, high strength, dimensional accuracy, and durability.</strong>
+                </p>
+              </div>
             </motion.div>
 
             <motion.div
@@ -87,24 +102,24 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gray-50 rounded-2xl p-8"
+              className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-800"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Users className="w-8 h-8 text-blue-600" />
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center border border-blue-500/30">
+                  <Users className="w-8 h-8 text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">Mr. Haroon</h3>
-                  <p className="text-gray-600">Owner & Proprietor</p>
+                  <h3 className="text-xl font-bold text-white">Mr. Haroon</h3>
+                  <p className="text-gray-400">Owner & Proprietor</p>
                 </div>
               </div>
-              <p className="text-gray-600 italic">
+              <p className="text-gray-300 italic leading-relaxed border-l-2 border-blue-500 pl-4">
                 "Under my supervision, we have achieved consistent growth and client trust. 
                 My deep industry knowledge and commitment to quality drive our daily operations."
               </p>
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Calendar size={18} />
+              <div className="mt-6 pt-6 border-t border-gray-800">
+                <div className="flex items-center gap-2 text-gray-400">
+                  <Calendar size={18} className="text-blue-400" />
                   <span>10+ years of experience in precision manufacturing</span>
                 </div>
               </div>
@@ -114,18 +129,26 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-24 px-4 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16">
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-blue-400 font-semibold text-sm uppercase tracking-widest"
+            >
+              What Drives Us
+            </motion.span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-3 mb-4">
               Our Core Values
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               The principles that guide everything we do
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -133,13 +156,14 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition"
+                whileHover={{ y: -5 }}
+                className="group bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 text-center border border-gray-800 hover:border-blue-500/50 transition-all duration-300"
               >
-                <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <value.icon className={`w-8 h-8 ${value.color}`} />
+                <div className="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-600/20 transition-all">
+                  <value.icon className="w-8 h-8 text-blue-400" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -147,30 +171,39 @@ export default function AboutPage() {
       </section>
 
       {/* Milestones Section */}
-      <section className="py-20 px-4">
+      <section className="py-24 px-4 bg-black">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16">
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-blue-400 font-semibold text-sm uppercase tracking-widest"
+            >
+              Timeline
+            </motion.span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-3 mb-4">
               Our Journey
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               Key milestones in our growth story
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {milestones.map((milestone, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center"
+                whileHover={{ y: -5 }}
+                className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 text-center border border-gray-800 hover:border-blue-500/30 transition-all"
               >
-                <div className="text-4xl font-bold text-blue-600 mb-2">{milestone.year}</div>
-                <div className="w-12 h-0.5 bg-blue-600 mx-auto my-3"></div>
-                <h3 className="font-semibold text-gray-900 mb-1">{milestone.title}</h3>
+                <div className="text-3xl font-bold text-blue-400 mb-2">{milestone.year}</div>
+                <div className="w-8 h-0.5 bg-blue-500 mx-auto my-3" />
+                <h3 className="font-semibold text-white mb-1">{milestone.title}</h3>
                 <p className="text-sm text-gray-500">{milestone.description}</p>
               </motion.div>
             ))}
@@ -179,17 +212,26 @@ export default function AboutPage() {
       </section>
 
       {/* Commitment Section */}
-      <section className="bg-blue-600 text-white py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <Trophy className="w-12 h-12 mx-auto mb-4 opacity-80" />
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Our Commitment to Quality
-          </h2>
-          <p className="text-blue-100 text-lg">
-            Every product is manufactured to meet or exceed client expectations. 
-            We combine skilled craftsmanship with modern machining capabilities to deliver 
-            solutions that improve your production efficiency.
-          </p>
+      <section className="relative py-24 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800" />
+        <div className="absolute inset-0 bg-black/20" />
+        
+        <div className="relative max-w-4xl mx-auto text-center z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            <Trophy className="w-16 h-16 mx-auto mb-6 text-white/80" />
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              Our Commitment to Quality
+            </h2>
+            <p className="text-blue-100 text-xl leading-relaxed max-w-3xl mx-auto">
+              Every product is manufactured to meet or exceed client expectations. 
+              We combine skilled craftsmanship with modern machining capabilities to deliver 
+              solutions that improve your production efficiency.
+            </p>
+          </motion.div>
         </div>
       </section>
     </div>

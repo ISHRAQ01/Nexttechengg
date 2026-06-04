@@ -1,18 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { MessageCircle } from "lucide-react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { MessageCircle } from "lucide-react";
 
 export default function WhatsAppButton() {
-  const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   const phoneNumber = "919810541602";
   const message = "Hello, I'm interested in your manufacturing services. Can you please share more details?";
@@ -23,21 +16,38 @@ export default function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ x: -100 }}
-      animate={{ x: 0 }}
-      transition={{ delay: 1, type: "spring" }}
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 1.5, type: "spring", stiffness: 300, damping: 20 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="fixed bottom-6 right-6 z-50 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all flex items-center overflow-hidden"
-      style={{ width: isHovered ? "auto" : "52px", height: "52px" }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="fixed bottom-6 right-6 z-50 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-full shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all flex items-center overflow-hidden"
+      style={{ width: isHovered ? "auto" : "56px", height: "56px" }}
       aria-label="Chat on WhatsApp"
     >
-      <div className="flex items-center justify-center w-[52px] h-[52px]">
-        <MessageCircle size={24} />
+      {/* Icon */}
+      <div className="flex items-center justify-center w-[56px] h-[56px] flex-shrink-0">
+        <motion.div
+          animate={{ rotate: [0, 10, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 3, repeatDelay: 5 }}
+        >
+          <MessageCircle size={26} />
+        </motion.div>
       </div>
-      <span className={`whitespace-nowrap pr-5 font-medium transition-all duration-300 ${isHovered ? "opacity-100 w-auto" : "opacity-0 w-0"}`}>
-        WhatsApp: {phoneNumber}
+
+      {/* Label */}
+      <span
+        className={`whitespace-nowrap pr-5 font-medium text-sm transition-all duration-300 ${
+          isHovered ? "opacity-100 max-w-[200px]" : "opacity-0 max-w-0"
+        }`}
+      >
+        Chat with us
       </span>
+
+      {/* Pulse Ring */}
+      <span className="absolute inset-0 rounded-full animate-ping bg-green-500/30" />
     </motion.a>
   );
 }

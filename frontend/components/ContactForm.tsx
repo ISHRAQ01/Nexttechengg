@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { sendInquiry,Inquiry } from "@/lib/api";
+import { sendInquiry, Inquiry } from "@/lib/api";
 import { toast } from "sonner";
+import { Send, Loader2 } from "lucide-react";
 
 export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +15,6 @@ export default function ContactForm() {
     formState: { errors },
   } = useForm<Inquiry>();
 
- 
   const onSubmit = async (data: Inquiry) => {
     setIsLoading(true);
     try {
@@ -25,7 +25,6 @@ export default function ContactForm() {
       });
       reset();
     } catch (error) {
-      // Still show success - email was likely sent
       toast.success("Inquiry sent successfully!", {
         description: "We'll contact you within 24 hours.",
         duration: 5000,
@@ -36,28 +35,33 @@ export default function ContactForm() {
     }
   };
 
+  const inputClass =
+    "w-full px-4 py-3 bg-gray-900/80 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-300";
+  const labelClass = "block text-sm font-medium text-gray-300 mb-2";
+  const errorClass = "text-red-400 text-sm mt-1.5 flex items-center gap-1";
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      {/* Name */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Full Name *
-        </label>
+        <label className={labelClass}>Full Name *</label>
         <input
           {...register("name", { required: "Name is required" })}
-          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${
-            errors.name ? "border-red-500" : "border-gray-300"
+          className={`${inputClass} ${
+            errors.name ? "border-red-500 focus:ring-red-500" : ""
           }`}
           placeholder="Enter your name"
         />
         {errors.name && (
-          <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+          <p className={errorClass}>
+            <span className="text-xs">⚠</span> {errors.name.message}
+          </p>
         )}
       </div>
 
+      {/* Mobile */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Mobile Number *
-        </label>
+        <label className={labelClass}>Mobile Number *</label>
         <input
           {...register("mobile", {
             required: "Mobile number is required",
@@ -66,63 +70,67 @@ export default function ContactForm() {
               message: "Enter a valid 10-digit Indian mobile number",
             },
           })}
-          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${
-            errors.mobile ? "border-red-500" : "border-gray-300"
+          className={`${inputClass} ${
+            errors.mobile ? "border-red-500 focus:ring-red-500" : ""
           }`}
           placeholder="9876543210"
         />
         {errors.mobile && (
-          <p className="text-red-500 text-sm mt-1">{errors.mobile.message}</p>
+          <p className={errorClass}>
+            <span className="text-xs">⚠</span> {errors.mobile.message}
+          </p>
         )}
       </div>
 
+      {/* Product Select */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Product / Service Needed
-        </label>
+        <label className={labelClass}>Product / Service Needed</label>
         <select
           {...register("requirement")}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+          className={`${inputClass} appearance-none cursor-pointer`}
+          style={{ colorScheme: "dark" }}
         >
-          <option value="">Select a product</option>
-          <option>Custom Fixture</option>
-          <option>Moulding Die</option>
-          <option>Industrial Jigs</option>
-          <option>Plastic Injection Mould</option>
-          <option>Plastic Parts</option>
-          <option>Sheet Metal Parts</option>
-          <option>EDM Drill Job Work</option>
-          <option>Other / Custom Requirement</option>
+          <option value="" className="bg-gray-900 text-gray-500">
+            Select a product
+          </option>
+          <option className="bg-gray-900 text-white">Custom Fixture</option>
+          <option className="bg-gray-900 text-white">Moulding Die</option>
+          <option className="bg-gray-900 text-white">Industrial Jigs</option>
+          <option className="bg-gray-900 text-white">Plastic Injection Mould</option>
+          <option className="bg-gray-900 text-white">Plastic Parts</option>
+          <option className="bg-gray-900 text-white">Sheet Metal Parts</option>
+          <option className="bg-gray-900 text-white">EDM Drill Job Work</option>
+          <option className="bg-gray-900 text-white">Other / Custom Requirement</option>
         </select>
       </div>
 
+      {/* Message */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Message / Requirement Details
-        </label>
+        <label className={labelClass}>Message / Requirement Details</label>
         <textarea
           {...register("message")}
-          rows={5}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+          rows={4}
+          className={`${inputClass} resize-none`}
           placeholder="Describe your requirement, quantity, material, or upload drawing link..."
         />
       </div>
 
+      {/* Submit Button */}
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-[1.02]"
+        className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3.5 rounded-xl font-semibold hover:from-blue-500 hover:to-blue-400 disabled:from-gray-700 disabled:to-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-[1.02] active:scale-95 shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2"
       >
         {isLoading ? (
-          <span className="flex items-center justify-center gap-2">
-            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-            </svg>
+          <>
+            <Loader2 size={18} className="animate-spin" />
             Sending...
-          </span>
+          </>
         ) : (
-          "Send Inquiry →"
+          <>
+            <Send size={18} />
+            Send Inquiry
+          </>
         )}
       </button>
     </form>
