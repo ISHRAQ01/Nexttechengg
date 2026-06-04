@@ -63,7 +63,7 @@ const products = [
 const galleryTabs = [
   { id: "moulds", label: "Mould Images", count: 31 },
   { id: "components", label: "Component Images", count: 24 },
-  { id: "workshop", label: "Workshop Images", count: 4 },
+  { id: "workshop", label: "Workshop Images", count: 11 },
 ];
 
 const allImages: Record<string, { src: string; alt: string; title: string }[]> = {
@@ -77,7 +77,7 @@ const allImages: Record<string, { src: string; alt: string; title: string }[]> =
     alt: `Product ${i + 1}`,
     title: `Component ${i + 1}`,
   })),
-  workshop: Array.from({ length: 4 }, (_, i) => ({
+  workshop: Array.from({ length: 11}, (_, i) => ({
     src: `/Workshop/Machines/machine-${i + 1}.jpeg`,
     alt: `Machine ${i + 1}`,
     title: `Machine ${i + 1}`,
