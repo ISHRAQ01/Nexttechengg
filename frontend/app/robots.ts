@@ -5,8 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/admin/",
     },
-    sitemap: "https://nexttech-engineering.vercel.app/sitemap.xml",
+    sitemap: "https://nexttechengg.vercel.app/sitemap.xml",
   };
 }

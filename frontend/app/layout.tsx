@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://nexttech-engineering.vercel.app",
+    url: "https://nexttechengg.vercel.app",
     siteName: "Next Tech Engineering",
     title: "Next Tech Engineering | Precision Manufacturers Since 2013",
     description: "Custom Fixtures, Moulding Dies, Plastic Injection Moulds, EDM Drill Job Work in Ghaziabad, India.",
