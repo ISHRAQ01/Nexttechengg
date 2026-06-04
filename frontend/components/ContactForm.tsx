@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { sendInquiry, wakeUpBackend, Inquiry } from "@/lib/api";
+import { sendInquiry,Inquiry } from "@/lib/api";
 import { toast } from "sonner";
 
 export default function ContactForm() {
@@ -14,11 +14,7 @@ export default function ContactForm() {
     formState: { errors },
   } = useForm<Inquiry>();
 
-  // Wake up backend when form loads
-  useEffect(() => {
-    wakeUpBackend();
-  }, []);
-
+ 
   const onSubmit = async (data: Inquiry) => {
     setIsLoading(true);
     try {
